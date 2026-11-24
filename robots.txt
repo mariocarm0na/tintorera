@@ -25,4 +25,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://nuriachavarria.es/sitemap.xml
+Sitemap: https://lamejortintorera.com/sitemap.xml
