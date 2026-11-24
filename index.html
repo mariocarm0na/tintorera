@@ -216,7 +216,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 .pickup-row:last-of-type{border-bottom:0}
 .pickup-row span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .pickup-row strong{font-size:1rem;user-select:all;word-break:break-word}
-.copy{font-family:var(--f-mono);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--paper);border:0;padding:.45rem .7rem;cursor:pointer}
+.mail-btn{display:block;margin-top:1rem;text-align:center;font-family:var(--f-mono);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;background:var(--pink);color:var(--paper);padding:1.1rem 1rem;border:2px solid var(--pink)}
+.mail-btn:hover{background:var(--ink);border-color:var(--ink)}
 .foot{margin-top:4.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8C93B3}
 
 /* ---------- PREGUNTAS (mostrador) ---------- */
@@ -288,7 +289,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
         <h1>Las manchas difíciles, <span class="ink">para mí.</span></h1>
         <p class="hero-sub">Toda una vida dirigiendo tintorerías y servicios: el mostrador, los equipos de limpieza, las rutas de reparto y los proveedores. Si su negocio tiene un problema que nadie consigue sacar, tráigalo.</p>
         <div class="hero-cta">
-          <a class="btn btn-ink" href="#recoger">Entregar un problema</a>
+          <a class="btn btn-ink" href="mailto:hola@lamejortintorera.com?subject=Propuesta%20de%20trabajo%20para%20Nuria%20Chavarr%C3%ADa">Entregar un problema</a>
           <a class="btn btn-ghost" href="#trayectoria">Ver la trayectoria</a>
         </div>
       </div>
@@ -514,8 +515,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
       <div class="pickup">
         <p class="eyebrow">Resguardo de recogida</p>
         <div class="pickup-row"><span>Nombre</span><strong>Nuria Chavarría</strong></div>
-        <div class="pickup-row"><span>Email</span><strong id="mail">hola@lamejortintorera.com</strong><button class="copy" type="button" data-copy="mail">Copiar</button></div>
+        <div class="pickup-row"><span>Email</span><strong id="mail">hola@lamejortintorera.com</strong></div>
         <div class="pickup-row"><span>Zona</span><strong>Barcelona y área metropolitana</strong></div>
+        <a class="mail-btn" href="mailto:hola@lamejortintorera.com?subject=Propuesta%20de%20trabajo%20para%20Nuria%20Chavarr%C3%ADa">Escribir a Nuria</a>
       </div>
     </div>
     <div class="foot"><span>lamejortintorera.com</span><span>La tintorera de toda la vida</span></div>
@@ -523,15 +525,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 </section>
 
 <script>
-document.querySelectorAll('.copy').forEach(function(b){
-  b.addEventListener('click',function(){
-    var el=document.getElementById(b.dataset.copy), txt=el.textContent.trim();
-    var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)};
-    try{navigator.clipboard.writeText(txt).then(done,function(){sel(el)})}catch(e){sel(el)}
-  });
-});
-function sel(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
-
 /* Sello en el ticket: funciona siempre */
 (function(){
   var t=document.querySelector('.ticket');
