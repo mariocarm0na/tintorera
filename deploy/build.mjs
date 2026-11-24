@@ -1,10 +1,10 @@
 // Genera dist/worker.js: un Worker de Cloudflare que sirve la web desde lamejortintorera.com
 // y redirige (301) el resto de hostnames. og-image.png se sirve desde KV.
-// Uso: node deploy/build.mjs [--index]   (--index permite la indexación en buscadores)
+// Uso: node deploy/build.mjs [--noindex]   (--noindex bloquea la indexación en buscadores)
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 const root = new URL("..", import.meta.url);
 const read = (f) => readFileSync(new URL(f, root), "utf8");
-const INDEXABLE = process.argv.includes("--index");
+const INDEXABLE = !process.argv.includes("--noindex");
 const min = (s) => s.replace(/\n\s+/g, "\n").replace(/\n{2,}/g, "\n");
 const files = {
   "/": [min(read("index.html")), "text/html; charset=utf-8"],
