@@ -1,0 +1,326 @@
+<title>Manchas Difíciles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: campaña de marca. Cada sección es un "cartel" a sangre; el objeto conductor es el ticket de tintorería colgado de una percha. Single-theme por decisión. */
+:root{
+  --paper:#F5F5F0;
+  --ink:#0D1838;
+  --pink:#FF2E63;
+  --cobalt:#2340FF;
+  --ticket:#FFD23F;
+  --muted:#5A6283;
+  --f-display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --f-body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut-l:max(16px,env(safe-area-inset-left,0px));
+  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.005em;margin:0;text-wrap:balance}
+p{margin:0}
+.ph{border-bottom:2px dashed currentColor;padding:0 .1em}
+.eyebrow{font-family:var(--f-mono);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--pink);color:var(--paper);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 1.25rem);overflow:hidden;position:relative}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.topbar .eyebrow{color:var(--paper)}
+.topbar a{color:var(--ink);background:var(--paper);text-decoration:none;font-family:var(--f-mono);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:.55rem .9rem}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:2rem;align-items:start;padding-block:2.5rem 4rem}
+.hero h1{font-size:clamp(3.6rem,11vw,9.5rem);color:var(--paper)}
+.hero h1 .ink{color:var(--ink)}
+.hero-sub{margin-top:1.6rem;max-width:34ch;font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:500}
+.hero-cta{margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;font-family:var(--f-mono);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;padding:1rem 1.3rem;text-decoration:none;border:2px solid var(--ink);cursor:pointer}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+/* percha + ticket */
+.hanger{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:.5rem}
+.hook{width:120px;height:90px}
+.ticket{--rot:-4deg;position:relative;width:min(100%,300px);background:var(--ticket);color:var(--ink);font-family:var(--f-mono);padding:1.4rem 1.3rem 1.2rem;transform-origin:50% -60px;transform:rotate(var(--rot));box-shadow:10px 14px 0 rgba(13,24,56,.22);margin-top:-6px;animation:swing 3.2s ease-in-out 1 both}
+.ticket::before{content:"";position:absolute;top:12px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--pink);box-shadow:inset 0 0 0 3px rgba(13,24,56,.25)}
+.ticket .no{font-family:var(--f-display);font-size:4.2rem;line-height:1;margin-top:1rem;letter-spacing:.01em}
+.ticket .no small{font-family:var(--f-mono);font-size:.8rem;vertical-align:top;margin-right:.3rem}
+.ticket dl{margin:1rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:.35rem .8rem;font-size:.8rem}
+.ticket dt{text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.ticket dd{margin:0;font-weight:700}
+.ticket .perf{margin:1.1rem -1.3rem .9rem;border-top:3px dotted var(--ink);opacity:.5}
+.ticket .stub{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;letter-spacing:.08em}
+@keyframes swing{0%{transform:rotate(14deg)}30%{transform:rotate(-9deg)}55%{transform:rotate(3deg)}78%{transform:rotate(-6deg)}100%{transform:rotate(var(--rot))}}
+
+/* ---------- CINTA ---------- */
+.ribbon{background:var(--ink);color:var(--ticket);overflow:hidden;white-space:nowrap;border-block:4px solid var(--ink)}
+.ribbon-track{display:inline-flex;gap:2.5rem;padding-block:.9rem;animation:run 32s linear infinite;font-family:var(--f-display);font-size:1.6rem;text-transform:uppercase}
+.ribbon-track span::after{content:"✳";margin-left:2.5rem;color:var(--pink)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---------- MANIFIESTO ---------- */
+.manifesto{padding-block:6rem}
+.manifesto .eyebrow{color:var(--pink)}
+.manifesto-lines{margin-top:2rem;display:grid;gap:.4rem}
+.manifesto-lines p{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.02;color:var(--muted)}
+.manifesto-lines p.hit{color:var(--ink)}
+.manifesto-lines p.hit em{font-style:normal;color:var(--pink)}
+.manifesto-sign{margin-top:2.5rem;max-width:58ch;font-size:1.1rem}
+
+/* ---------- ETIQUETA DE CUIDADO ---------- */
+.care{background:var(--cobalt);color:var(--paper);padding-block:5.5rem}
+.care-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap}
+.care h2{font-size:clamp(2.6rem,7vw,5.6rem);max-width:12ch}
+.care-head p{max-width:36ch;font-size:1.05rem}
+.care-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:0;border-top:2px solid var(--paper);border-left:2px solid var(--paper)}
+.care-item{border-right:2px solid var(--paper);border-bottom:2px solid var(--paper);padding:1.5rem 1.3rem 1.7rem;display:flex;flex-direction:column;gap:.9rem;min-width:0;transition:background .2s,color .2s}
+.care-item:hover{background:var(--paper);color:var(--ink)}
+.care-item svg{width:56px;height:56px;flex:none}
+.care-item .code{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;opacity:.75}
+.care-item h3{font-size:1.75rem;line-height:1}
+.care-item p{font-size:.95rem}
+
+/* ---------- MITOS ---------- */
+.myths{padding-block:6rem}
+.myths h2{font-size:clamp(2.6rem,7vw,5.6rem)}
+.myths h2 span{color:var(--pink)}
+.myth-list{margin-top:3rem;display:grid;gap:0;border-top:3px solid var(--ink)}
+.myth{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.2fr);gap:1.5rem;align-items:center;padding-block:1.6rem;border-bottom:3px solid var(--ink)}
+.myth .said{font-family:var(--f-display);font-size:clamp(1.5rem,3.4vw,2.6rem);text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:.12em}
+.myth .arrow{font-family:var(--f-display);font-size:2.4rem;color:var(--pink)}
+.myth .real{font-family:var(--f-display);font-size:clamp(1.5rem,3.4vw,2.6rem);text-transform:uppercase;line-height:1}
+.myth .real small{display:block;font-family:var(--f-body);text-transform:none;font-size:1rem;line-height:1.45;color:var(--muted);margin-top:.5rem}
+
+/* ---------- TRAYECTORIA ---------- */
+.career{background:var(--ticket);padding-block:5.5rem}
+.career h2{font-size:clamp(2.6rem,7vw,5.6rem)}
+.career-note{margin-top:1rem;font-family:var(--f-mono);font-size:.85rem}
+.rack{margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1.5rem;position:relative;padding-top:2.2rem}
+.rack::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--ink);border-radius:4px}
+.tag{position:relative;background:var(--paper);padding:1.4rem 1.3rem;border:2px solid var(--ink);min-width:0}
+.tag::before{content:"";position:absolute;top:-2.2rem;left:1.6rem;width:2px;height:2.2rem;background:var(--ink)}
+.tag .yrs{font-family:var(--f-mono);font-weight:700;font-size:.8rem;letter-spacing:.1em;color:var(--cobalt)}
+.tag h3{font-size:1.7rem;margin-top:.5rem;line-height:1}
+.tag p{margin-top:.7rem;font-size:.95rem;color:var(--muted)}
+.tag .kind{display:inline-block;margin-top:1rem;font-family:var(--f-mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .5rem;background:var(--ink);color:var(--paper)}
+.tag .kind.own{background:var(--pink)}
+
+/* ---------- CIERRE ---------- */
+.close{background:var(--ink);color:var(--paper);padding-block:6rem 4rem}
+.close-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3rem;align-items:center}
+.close h2{font-size:clamp(3rem,9vw,7.5rem)}
+.close h2 span{color:var(--ticket)}
+.close-sub{margin-top:1.5rem;max-width:40ch;font-size:1.15rem;color:#C8CDE0}
+.pickup{background:var(--paper);color:var(--ink);font-family:var(--f-mono);padding:1.6rem;border-top:10px solid var(--pink);min-width:0}
+.pickup .eyebrow{color:var(--pink)}
+.pickup-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:.9rem;border-bottom:2px dotted var(--muted);flex-wrap:wrap}
+.pickup-row:last-of-type{border-bottom:0}
+.pickup-row span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pickup-row strong{font-size:1rem;user-select:all;word-break:break-word}
+.copy{font-family:var(--f-mono);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--paper);border:0;padding:.45rem .7rem;cursor:pointer}
+.foot{margin-top:4.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8C93B3}
+
+@media (max-width:820px){
+  .hero-grid,.close-grid{grid-template-columns:1fr}
+  .hanger{order:-1;align-items:flex-start;padding-left:1rem}
+  .hook{width:90px;height:68px}
+  .ticket{width:min(100%,270px)}
+  .myth{grid-template-columns:1fr;gap:.4rem}
+  .myth .arrow{transform:rotate(90deg);width:max-content;line-height:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticket,.ribbon-track{animation:none}
+  .btn:hover{transform:none}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="eyebrow">Ticket Nº 0058 · Dirección de tintorerías</span>
+      <a href="#recoger">Recoger aquí</a>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>Las manchas difíciles, <span class="ink">para mí.</span></h1>
+        <p class="hero-sub">Toda una vida al frente de tintorerías: el mostrador, el equipo, la maquinaria y los proveedores. Si su negocio tiene un problema que nadie consigue sacar, tráigalo.</p>
+        <div class="hero-cta">
+          <a class="btn btn-ink" href="#recoger">Entregar un problema</a>
+          <a class="btn btn-ghost" href="#trayectoria">Ver la trayectoria</a>
+        </div>
+      </div>
+      <div class="hanger" aria-label="Ticket de tintorería">
+        <svg class="hook" viewBox="0 0 120 90" aria-hidden="true">
+          <path d="M60 6c10 0 14 8 10 14s-10 8-10 16v8" fill="none" stroke="#0D1838" stroke-width="5" stroke-linecap="round"/>
+          <path d="M6 86L60 44l54 42" fill="none" stroke="#0D1838" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div class="ticket">
+          <div class="no"><small>Nº</small>0058</div>
+          <dl>
+            <dt>Cliente</dt><dd>Su empresa</dd>
+            <dt>Prenda</dt><dd>Problema sin resolver</dd>
+            <dt>Tratamiento</dt><dd>Experiencia</dd>
+            <dt>Entrega</dt><dd>Inmediata</dd>
+          </dl>
+          <div class="perf"></div>
+          <div class="stub"><span>Nº 0058</span><span>Disponible</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>Limpieza en seco</span><span>Dirección de equipos</span><span>Proveedores</span><span>Planchado</span><span>Apertura de negocios</span><span>Atención al cliente</span><span>Control de costes</span>
+    <span>Limpieza en seco</span><span>Dirección de equipos</span><span>Proveedores</span><span>Planchado</span><span>Apertura de negocios</span><span>Atención al cliente</span><span>Control de costes</span>
+  </div>
+</div>
+
+<section class="manifesto">
+  <div class="wrap">
+    <p class="eyebrow">Manifiesto</p>
+    <div class="manifesto-lines">
+      <p>Esto va por los que suben la persiana a las siete.</p>
+      <p>Por los que negocian con el proveedor a pie de furgoneta.</p>
+      <p>Por los que sacan la mancha que otro daba por perdida.</p>
+      <p>Por los que montan un negocio. Y otro. Y otro.</p>
+      <p class="hit">A los 58 no se empieza de cero. <em>Se empieza con ventaja.</em></p>
+    </div>
+    <p class="manifesto-sign"><span class="ph">[Nombre Apellido]</span> ha estado a los dos lados del mostrador: como dueña de su propio negocio y como responsable en tintorerías ajenas. Sabe lo que cuesta cada prenda, cada turno y cada cliente que no vuelve.</p>
+  </div>
+</section>
+
+<section class="care">
+  <div class="wrap">
+    <div class="care-head">
+      <h2>Instrucciones de cuidado</h2>
+      <p>Cada prenda trae su etiqueta. Esta es la suya: lo que puede encargarle y cómo lo va a tratar.</p>
+    </div>
+    <div class="care-grid">
+      <article class="care-item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="24" fill="none" stroke="currentColor" stroke-width="3.5"/><text x="28" y="37" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="26" fill="currentColor">P</text></svg>
+        <span class="code">CÓD. 01 · LIMPIEZA EN SECO</span>
+        <h3>Dirigir la tintorería</h3>
+        <p>Operativa diaria, turnos, cierre de caja y la tienda funcionando sin que el dueño tenga que estar.</p>
+      </article>
+      <article class="care-item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M8 42h40l-4-16c-1-4-4-6-8-6H22c-6 0-10 4-12 10z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="24" cy="34" r="2.5" fill="currentColor"/><circle cx="32" cy="34" r="2.5" fill="currentColor"/></svg>
+        <span class="code">CÓD. 02 · PLANCHADO</span>
+        <h3>Procesos sin arrugas</h3>
+        <p>Ordenar flujos de trabajo, tiempos de entrega y control de calidad prenda a prenda.</p>
+      </article>
+      <article class="care-item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M28 8L50 46H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></svg>
+        <span class="code">CÓD. 03 · ADMITE TRATO FUERTE</span>
+        <h3>Proveedores y compras</h3>
+        <p>Negociar disolventes, maquinaria y mantenimiento. Saber cuándo apretar y cuándo cuidar la relación.</p>
+      </article>
+      <article class="care-item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M6 14h44l-5 32H11z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M10 24c4-4 8 4 12 0s8 4 12 0 8 4 12 0" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+        <span class="code">CÓD. 04 · LAVADO EN EQUIPO</span>
+        <h3>Liderar personas</h3>
+        <p>Formar, motivar y mantener equipos en un oficio exigente, trabajando mano a mano con ellos.</p>
+      </article>
+      <article class="care-item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><rect x="7" y="7" width="42" height="42" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="28" cy="28" r="13" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>
+        <span class="code">CÓD. 05 · SECADO RÁPIDO</span>
+        <h3>Abrir y levantar negocios</h3>
+        <p>Ha montado su propio negocio más de una vez. Local, licencias, clientela y números desde cero.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="myths">
+  <div class="wrap">
+    <h2>Lo que dicen. <span>Lo que hay.</span></h2>
+    <div class="myth-list">
+      <div class="myth">
+        <span class="said">58 años</span><span class="arrow" aria-hidden="true">→</span>
+        <span class="real">Cero curva de aprendizaje<small>No hay avería, cliente enfadado ni temporada mala que no haya visto antes.</small></span>
+      </div>
+      <div class="myth">
+        <span class="said">Sector tradicional</span><span class="arrow" aria-hidden="true">→</span>
+        <span class="real">Superviviente de cada crisis<small>Ha visto cambiar la clientela, los precios y la competencia, y ha sabido adaptarse cada vez.</small></span>
+      </div>
+      <div class="myth">
+        <span class="said">Solo tintorerías</span><span class="arrow" aria-hidden="true">→</span>
+        <span class="real">Gestión de cualquier negocio de servicio<small>Personal, proveedores, caja y cliente. Lo mismo que necesita una lavandería industrial, una cadena o un hotel.</small></span>
+      </div>
+      <div class="myth">
+        <span class="said">Sin trabajo</span><span class="arrow" aria-hidden="true">→</span>
+        <span class="real">Disponible mañana<small>Sin periodo de preaviso. Con ganas.</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="career" id="trayectoria">
+  <div class="wrap">
+    <h2>Prendas entregadas</h2>
+    <p class="career-note">Trayectoria · pendiente de completar con el CV</p>
+    <div class="rack">
+      <article class="tag">
+        <span class="yrs"><span class="ph">[Años]</span></span>
+        <h3>Tintorería propia</h3>
+        <p>Primer negocio propio. Apertura, clientela y gestión completa.</p>
+        <span class="kind own">Por cuenta propia</span>
+      </article>
+      <article class="tag">
+        <span class="yrs"><span class="ph">[Años]</span></span>
+        <h3>Responsable de tienda</h3>
+        <p><span class="ph">[Empresa]</span>. Dirección de equipo y relación con distribuidores.</p>
+        <span class="kind">Por cuenta ajena</span>
+      </article>
+      <article class="tag">
+        <span class="yrs"><span class="ph">[Años]</span></span>
+        <h3>Segundo negocio</h3>
+        <p><span class="ph">[Detalle del CV]</span></p>
+        <span class="kind own">Por cuenta propia</span>
+      </article>
+      <article class="tag">
+        <span class="yrs"><span class="ph">[Años]</span></span>
+        <h3>Último puesto</h3>
+        <p><span class="ph">[Detalle del CV]</span></p>
+        <span class="kind">Por cuenta ajena</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="recoger">
+  <div class="wrap">
+    <div class="close-grid">
+      <div>
+        <h2>Entregue el problema. <span>Recójalo resuelto.</span></h2>
+        <p class="close-sub">Busco dirigir una tintorería, una cadena o un proyecto de servicios donde haga falta alguien que ya sepa cómo se hace.</p>
+      </div>
+      <div class="pickup">
+        <p class="eyebrow">Resguardo de recogida</p>
+        <div class="pickup-row"><span>Nombre</span><strong class="ph">[Nombre Apellido]</strong></div>
+        <div class="pickup-row"><span>Teléfono</span><strong id="tel">[600 000 000]</strong><button class="copy" type="button" data-copy="tel">Copiar</button></div>
+        <div class="pickup-row"><span>Email</span><strong id="mail">[correo@ejemplo.com]</strong><button class="copy" type="button" data-copy="mail">Copiar</button></div>
+        <div class="pickup-row"><span>Zona</span><strong class="ph">[Ciudad]</strong></div>
+      </div>
+    </div>
+    <div class="foot"><span>Ticket Nº 0058</span><span>Ninguna mancha se resiste</span></div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copy), txt=el.textContent.trim();
+    var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)};
+    try{navigator.clipboard.writeText(txt).then(done,function(){sel(el)})}catch(e){sel(el)}
+  });
+});
+function sel(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+</script>
